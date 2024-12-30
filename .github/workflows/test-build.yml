@@ -24,7 +24,7 @@ jobs:
 
   #2. 빌드 jobs
   build:
-    runs-on: ubunte-lastest
+    runs-on: ubuntu-lastest
     steps: 
       - name: Get Codes
         uses: actions/checkout@v4
