@@ -1,0 +1,21 @@
+#name : 워크플로우의 이름
+name: First workflow
+#on: 워크플로우가 트리거 될 이벤트
+#workflow_dispatch : 수동으로 트리거
+on: workflow_dispatch
+#jobs: job의 정의
+jobs:
+  #job.id :job의 이름 임의의 이름
+  first-jobs:
+    #runs-on : job이 실행될 이름
+    #runner
+    runs-on: ubuntu-latest
+    #steps: job이 가져야할 일련의 과정
+    steps:
+      # - name:setp의 이름(띄어쓰기 꼭 잘해야됨)
+      - name: Print Greeting
+      #run : cli 명령어(맥환경 - 리눅스 명령어임)
+        run: echo "Hello World!"
+
+      - name: Print Goodbye
+        run: echo " Done ! Bye"
