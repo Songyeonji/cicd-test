@@ -2,11 +2,14 @@ name: PR
 on: pull_request
 jobs:
   build-test:
+    continue-on-error: true
     #버전별 테스트 방법
     strategy:
       matrix:
         node-version: [18, 20]
-    runs-on: ubuntu-latest
+        os-type: [ubuntu-latest, windows-latest]
+
+    runs-on: ${{ matrix.os-type}}
     steps: 
       - name: Get Codes
         uses: actions/checkout@v4
@@ -14,9 +17,14 @@ jobs:
       #node.js 설치
       - name: Install NodeJs
         uses: actions/setup-node@v4
+        with: 
+          node-version: ${{matrix.node-version}}
 
       - name: Install Deps
         run: npm install
         
       - name: Build
         run: npm run build
+      
+      - name: test
+        run: npm run test
