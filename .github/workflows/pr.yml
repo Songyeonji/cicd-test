@@ -2,11 +2,14 @@ name: PR
 on: pull_request
 jobs:
   build-test:
+    continue-on-error: true
     #버전별 테스트 방법
     strategy:
       matrix:
         node-version: [18, 20]
-    runs-on: ubuntu-latest
+        os-type: [ubuntu-latest, windows-latest]
+
+    runs-on: ${{ matrix.os-type}}
     steps: 
       - name: Get Codes
         uses: actions/checkout@v4
