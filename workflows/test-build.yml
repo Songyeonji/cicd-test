@@ -15,6 +15,7 @@ on:
   workflow_dispatch:
     branches:
       - dev
+      - "feat/**"
 
 jobs:
   #1. 테스트
